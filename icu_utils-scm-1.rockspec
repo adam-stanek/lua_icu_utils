@@ -1,7 +1,12 @@
 package = "icu_utils"
 version = "scm-1"
 source = {
-  url = "..."
+  url = "https://github.com/v3lbloud/lua_icu_utils.git"
+}
+
+description = {
+  summary = "Library providing interface to selected utilities from ICU project.",
+  homepage = "https://github.com/v3lbloud/lua_icu_utils"
 }
 
 dependencies = {

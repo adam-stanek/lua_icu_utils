@@ -23,7 +23,7 @@ icu_utils.so: $(OBJ)
 	$(CC) $(CFLAGS_ALL) -c $< -o $@
 
 test: icu_utils.so
-	busted --cpath ./?.so spec
+	busted --cpath ./?.so spec/icu_utils_spec.lua
 
 install: icu_utils.so
 	cp icu_utils.so $(INST_LIBDIR)/
