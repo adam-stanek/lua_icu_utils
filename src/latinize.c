@@ -29,7 +29,7 @@ int latinize(lua_State *l) {
   }
 
   // Create transliterator
-  DEF_UTF16_LITERAL(translit_id, "Any-Latin; Latin-ASCII");
+  DEF_UTF16_LITERAL(translit_id, "Any-Latin; Latin-ASCII; [\\u0080-\\u7fff] remove");
   UErrorCode status = U_ZERO_ERROR;
   UTransliterator * trans = utrans_openU(translit_id, -1, UTRANS_FORWARD, NULL, 0, NULL, &status);
 
