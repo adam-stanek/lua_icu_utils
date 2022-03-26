@@ -66,6 +66,7 @@ int latinize(lua_State *l) {
       }
 
       str = new_str;
+      out_len = out_len2;
 
     } else {
       free(str);
@@ -77,22 +78,8 @@ int latinize(lua_State *l) {
   // Close transliterator, we already have the result
   utrans_close(trans);
 
-  // Allocate memory for coversion back to UTF-8
-  // Note: since we have transliterated string into ASCII UTF-8 representation it will not
-  // have more bytes than number of characters (all ASCII chars are interpreted as a single byte).
-  char * result = malloc(out_len + 1);
-  u_strToUTF8(result, out_len + 1, NULL, str, out_len, &status);
-
+  push_str(l, str, out_len);
   free(str);
-
-  if(U_FAILURE(status)) {
-    free(str);
-    free(result);
-    return luaL_error(l, "Unable to convert string back to UTF-8.");
-  }
-
-  lua_pushstring(l, result);
-  free(result);
 
   return 1;
 }
