@@ -1,0 +1,15 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  Linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Update apt cache
+      run: sudo apt-get update
+    - name: Install dependencies
+      run: sudo apt-get install libicu-dev luarocks
+    - name: Build
+      run: sudo luarocks make CFLAGS="-O2 -fPIC -Wall -Werror"
