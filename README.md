@@ -25,9 +25,27 @@ icu_utils.capitalize(str)
 icu_utils.latinize(str)
 ```
 
-## Usage
+## Build
+
+### Linux
+
+#### Debian/Ubuntu
 
 ```bash
-sudo apt-get install libicu-dev
+sudo apt-get install luarocks libicu-dev
 luarocks make
 ```
+
+#### Fedora/CentOS/RHEL
+
+- on CentOS/RHEL luarocks requires [EPEL](https://docs.fedoraproject.org/en-US/epel/)
+- on older distributions use "yum" instead of dnf
+
+```bash
+dnf install luarocks libicu-devel
+luarocks make
+```
+
+## License
+
+[MIT License](LICENSE)
